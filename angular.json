@@ -121,8 +121,18 @@
               "devServerTarget": "comminity:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://github.com/AlfredNico/community/",
+            "repo": "https://github.com/AlfredNico/community.git",
+            "name": "Alfred Nico",
+            "email": "alfrednicotsu@gmail.com"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "comminity"
 }
