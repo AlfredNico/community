@@ -1,20 +1,32 @@
-name: main site CI
+name: Deploy to Github repository
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # pull_request:
+    # branches: [ master ]
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the site in the jekyll/builder container
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use NodeJs.12.x
+      uses: actions/setup-node@v1
+      with: 
+          node-version: 12.x
+
+    - name: Prepare and deploy
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
+        npm cli
+        npm run ng deploy
+
+      # run: |
+      #   docker run \
+      #   -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+      #   jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
