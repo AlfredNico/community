@@ -125,10 +125,11 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://alfred-cumminity.com/",
+            "baseHref": "https://comminity.web.app/",
             "repo": "https://github.com/AlfredNico/community.git",
             "name": "Alfred Nico",
-            "email": "alfrednicotsu@gmail.com"
+            "email": "alfrednicotsu@gmail.com",
+            "cname": "https://comminity.web.app/"
           }
         }
       }
