@@ -2,7 +2,8 @@ name: Deploy to Github repository
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      - master
   # pull_request:
     # branches: [ master ]
 
@@ -11,13 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout master
-       uses: actions/checkout@master
-
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@master
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
           with: 
-            node-version: 12.x
+            node-version: '12.x'
 
       - run: npm install
       - run: npm run build
@@ -26,8 +24,10 @@ jobs:
             args: deploy --only hosting
           env:
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+            H_TOKEN: ${{ secrets.GH_TOKEN }}
 
-            
+
+
   # build-and-deploy:
   #   runs-on: ubuntu-latest
 
