@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/comminity",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
